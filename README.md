@@ -1,6 +1,6 @@
 # Calculator on CLI (Command Line Interface). (15.09.2021)
 
-Clone the repo and type the command "node calculator" in the terminal.
+Clone the repo and type at the terminal command line: node calculator
 
 Choose a calculation option among these 11 options:
 
@@ -16,6 +16,10 @@ Choose a calculation option among these 11 options:
 9 - calculate.elevate(x, y)
 10 - calculate.sqrt(x)
 
+## Built with
+- Vanilla Javascript
+- NPM package colors (https://www.npmjs.com/package/colors)
+- NPM package chalk-animation (https://www.npmjs.com/package/chalk-animation)
 
 
 ![](./calculator-1.png)
