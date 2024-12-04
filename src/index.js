@@ -3,6 +3,7 @@ const prompt = require("prompt-sync")({ sigint: true });
 const colors = require("colors");
 // const chalk = require("chalk");
 const chalkAnimation = require("chalk-animation");
+const { randomUpTo } = require("./utils");
 
 // END: Color NPM packages
 
@@ -14,12 +15,6 @@ let yValue;
 let width;
 
 // END: Variables declared
-
-// Functions
-const randomUpTo = function (max) {
-  randomNum = Math.floor(Math.random() * (max + 1));
-  return Number(randomNum);
-};
 
 const validation1 = function (menuChoice) {
   while (
