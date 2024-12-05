@@ -17,10 +17,10 @@ Choose a calculation option among these 11 options:
 10 - calculate.sqrt(x)
 
 ## Built with
+
 - Javascript
 - NPM package colors (https://www.npmjs.com/package/colors)
 - NPM package chalk-animation (https://www.npmjs.com/package/chalk-animation)
-
 
 ![](./calculator-1.png)
 
