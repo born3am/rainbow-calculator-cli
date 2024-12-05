@@ -1,4 +1,5 @@
 import chalkAnimation from 'chalk-animation';
+// eslint-disable-next-line no-unused-vars
 import colors from 'colors';
 
 import { Calculator } from './classes/calculator.js';
