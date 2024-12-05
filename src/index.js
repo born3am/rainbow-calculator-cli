@@ -6,11 +6,13 @@ import chalkAnimation from "chalk-animation";
 import colors from "colors";
 
 const validation1 = async (menuChoice) => {
-  while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice) || menuChoice == "") {
+  menuChoice = Number(menuChoice);
+  while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice) || menuChoice === "") {
     console.log("\nNot a valid number ".white.bgRed);
     menuChoice = await askQuestion("Choose a menu number (0-10) and press enter: ".black.bgYellow);
+    menuChoice = Number(menuChoice);
   }
-  return Number(menuChoice);
+  return menuChoice;
 };
 
 const validation2 = async (numNotStr) => {
