@@ -1,7 +1,7 @@
 import chalkAnimation from 'chalk-animation';
 import colors from 'colors';
 
-import { Calculator } from './calculator/calculator.js';
+import { Calculator } from './classes/calculator.js';
 import { MENU_OPTIONS } from './constants/menu.js';
 import { MENU_TEXT } from './constants/menuText.js';
 import { askQuestion, rl } from './utils/helpers.js';
