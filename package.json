@@ -1,17 +1,16 @@
 {
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "chalk-animation": "^1.3.0",
-    "colors": "^1.4.0",
-    "prompt-sync": "^4.2.0",
-    "prompt-sync-history": "^1.0.1"
-  },
   "name": "rainbow-calculator-cli",
   "description": "You'll find the instructions for each project in the designated markdown file located in the projects directory. If you choose to do one that's not listed, you should add your own README.md.",
   "version": "1.0.0",
   "main": "index.js",
+  "prettier": "@born3am/prettier-config",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -c eslint.config.js --cache .",
+    "lint:fix": "npm run lint -- --no-cache --fix",
+    "prettier": "prettier --check --cache --no-error-on-unmatched-pattern '**/*.md' '**/*.yml' '**/*.json' '**/*.html' '**/*.css' '**/*.scss' '**/*.sass' '**/*.less'",
+    "prettier:fix": "npm run prettier -- --no-cache --write",
+    "fix": "npm run prettier:fix ; npm run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -23,5 +22,15 @@
     "url": "https://github.com/FbW-E04-2/pb-final-project-born3am/issues"
   },
   "homepage": "https://github.com/FbW-E04-2/pb-final-project-born3am#readme",
-  "devDependencies": {}
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "chalk-animation": "^1.3.0",
+    "colors": "^1.4.0",
+    "prompt-sync": "^4.2.0",
+    "prompt-sync-history": "^1.0.1"
+  },
+  "devDependencies": {
+    "@born3am/eslint-config": "^1.1.1",
+    "@born3am/prettier-config": "^1.0.1"
+  }
 }
