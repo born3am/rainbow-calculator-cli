@@ -12,4 +12,7 @@ const MENU_OPTIONS = [
   "Square Root of x",
 ];
 
-export { MENU_OPTIONS };
+const MIN_MENU_OPTION = 0;
+const MAX_MENU_OPTION = 10;
+
+export { MENU_OPTIONS, MIN_MENU_OPTION, MAX_MENU_OPTION };

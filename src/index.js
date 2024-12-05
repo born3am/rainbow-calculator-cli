@@ -1,61 +1,50 @@
 import { askQuestion, rl } from "./utils/helpers.js";
-import { randomUpTo } from "./utils/randomNumber.js";
 import { Calculator } from "./calculator/calculator.js";
 import { MENU_OPTIONS } from "./constants/menu.js";
+import { validateMenuChoice, validateNumberInput } from "./utils/validation.js";
+import { MENU_TEXT } from "./constants/menuText.js";
 import chalkAnimation from "chalk-animation";
 import colors from "colors";
 
-const validation1 = async (menuChoice) => {
-  menuChoice = Number(menuChoice);
-  while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice) || menuChoice === "") {
-    console.log("\nNot a valid number ".white.bgRed);
-    menuChoice = await askQuestion("Choose a menu number (0-10) and press enter: ".black.bgYellow);
-    menuChoice = Number(menuChoice);
-  }
-  return menuChoice;
+const displayMenu = (welcome) => {
+  console.clear();
+  console.log(`\nHello ${welcome.italic.underline.bold}! What you wanna do with our calculator?`.yellow);
+  MENU_OPTIONS.forEach((option, index) => console.log(`${index} - ${option}`.italic.cyan));
 };
 
-const validation2 = async (numNotStr) => {
-  if (numNotStr === "r") {
-    return randomUpTo(100);
+const getUserInputs = async (menu) => {
+  let xValue, yValue, width;
+  if (menu >= 2 && menu <= 10) {
+    xValue = await askQuestion(MENU_TEXT.xVariablePrompt.green.bold);
+    xValue = await validateNumberInput(xValue);
+    if (menu < 10) {
+      yValue = await askQuestion(MENU_TEXT.yVariablePrompt.green.bold);
+      yValue = await validateNumberInput(yValue);
+    }
+    if (menu === 2) {
+      width = await askQuestion(MENU_TEXT.widthVariablePrompt.green.bold);
+      width = await validateNumberInput(width);
+    }
   }
-  while (isNaN(numNotStr) && numNotStr !== "r") {
-    console.log("\nNot a valid number ".white.bgRed);
-    numNotStr = await askQuestion(`"${numNotStr}" is not valid. Type a NUMBER: `.green.bold);
-  }
-  return numNotStr === "r" ? randomUpTo(100) : Number(numNotStr);
+  return { xValue, yValue, width };
 };
 
 const main = async () => {
   console.clear();
-  console.log('\n\n  😀  Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n'.rainbow);
+  console.log(MENU_TEXT.welcome.rainbow);
 
-  let welcome = await askQuestion("Please enter your name here: ".black.bgWhite);
+  let welcome = await askQuestion(MENU_TEXT.enterName.black.bgWhite);
   while (welcome === "" || parseFloat(welcome) || welcome.length < 3) {
-    console.log("\nCome on, tell me your name man!\n".green);
-    welcome = await askQuestion("Please enter your name here: ".black.bgWhite);
+    console.log(MENU_TEXT.invalidName.green);
+    welcome = await askQuestion(MENU_TEXT.enterName.black.bgWhite);
   }
 
-  console.clear();
-  console.log(`\nHello ${welcome.italic.underline.bold}! What you wanna do with our calculator?`.yellow);
-  MENU_OPTIONS.forEach((option, index) => console.log(`${index} - ${option}`.italic.cyan));
+  displayMenu(welcome);
 
-  let menu = await askQuestion("Choose a menu number (0-10) and press enter: ".black.bgYellow);
-  menu = await validation1(Number(menu));
+  let menu = await askQuestion(MENU_TEXT.menuPrompt.black.bgYellow);
+  menu = await validateMenuChoice(menu);
 
-  let xValue, yValue, width;
-  if (menu >= 2 && menu <= 10) {
-    xValue = await askQuestion('Choose a NUMBER as your "x" variable (type "r" for random): '.green.bold);
-    xValue = await validation2(xValue);
-    if (menu < 10) {
-      yValue = await askQuestion('Choose a NUMBER as your "y" variable (type "r" for random): '.green.bold);
-      yValue = await validation2(yValue);
-    }
-    if (menu === 2) {
-      width = await askQuestion('Choose a NUMBER as your "width" variable (type "r" for random): '.green.bold);
-      width = await validation2(width);
-    }
-  }
+  const { xValue, yValue, width } = await getUserInputs(menu);
 
   const calculate = new Calculator(xValue, yValue, width);
   switch (menu) {
@@ -72,10 +61,10 @@ const main = async () => {
     case 10: console.log(`Square Root = ${calculate.sqrt()}`.rainbow); break;
   }
 
-  const rainbow = chalkAnimation.rainbow("I hope you had fun. See you later!!!", 1);
+  const rainbow = chalkAnimation.rainbow(MENU_TEXT.farewell, 1);
   setTimeout(() => {
-    rainbow.stop(); // Stop the animation
-    rl.close(); // Close the readline interface
+    rainbow.stop();
+    rl.close();
   }, 1000);
 };
 
