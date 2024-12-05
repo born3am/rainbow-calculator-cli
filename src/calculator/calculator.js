@@ -8,7 +8,7 @@ class Calculator {
   }
 
   ratio() {
-    return Math.abs(this.y) / Math.abs(this.x) * this.width;
+    return (Math.abs(this.y) / Math.abs(this.x)) * this.width;
   }
 
   percentage() {
