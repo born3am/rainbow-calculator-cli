@@ -5,4 +5,4 @@ const randomUpTo = (max) => {
   return Number(randomNum);
 };
 
-module.exports = { randomUpTo };
+export { randomUpTo };

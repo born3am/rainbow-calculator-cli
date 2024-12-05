@@ -12,4 +12,4 @@ const MENU_OPTIONS = [
   "Square Root of x",
 ];
 
-module.exports = { MENU_OPTIONS };
+export { MENU_OPTIONS };

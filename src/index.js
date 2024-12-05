@@ -1,10 +1,9 @@
-// Main application logic
-const { askQuestion, rl } = require("./utils/helpers");
-const { randomUpTo } = require("./utils/randomNumber");
-const Calculator = require("./calculator/calculator");
-const { MENU_OPTIONS } = require("./constants/menu");
-const chalkAnimation = require("chalk-animation");
-const colors = require("colors");
+import { askQuestion, rl } from "./utils/helpers.js";
+import { randomUpTo } from "./utils/randomNumber.js";
+import { Calculator } from "./calculator/calculator.js";
+import { MENU_OPTIONS } from "./constants/menu.js";
+import chalkAnimation from "chalk-animation";
+import colors from "colors";
 
 const validation1 = async (menuChoice) => {
   while (menuChoice < 0 || menuChoice > 10 || isNaN(menuChoice) || menuChoice == "") {
