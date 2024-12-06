@@ -7,7 +7,7 @@
   "prettier": "@born3am/prettier-config",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "lint": "eslint -c eslint.config.js --cache .",
     "lint:fix": "npm run lint -- --no-cache --fix",
     "prettier": "prettier --check --cache --no-error-on-unmatched-pattern '**/*.md' '**/*.yml' '**/*.json' '**/*.html' '**/*.css' '**/*.scss' '**/*.sass' '**/*.less'",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@born3am/eslint-config": "^1.1.1",
-    "@born3am/prettier-config": "^1.0.1"
+    "@born3am/prettier-config": "^1.0.1",
+    "jest": "^29.7.0"
   }
 }
