@@ -29,7 +29,8 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' # Ensure linting only happens on PRs
+    # Ensure linting only happens on PRs
+    if: github.event_name == 'pull_request'
 
     needs: build # Ensure linting runs after build completes
 
