@@ -22,7 +22,7 @@ const main = async () => {
   console.log(COPY_EN.welcome.rainbow);
 
   let welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
-  while (welcome === '' || parseFloat(welcome) || welcome.length < minUserNameLength) {
+  while (welcome.trim() === '' || welcome.trim().length < minUserNameLength) {
     console.log(COPY_EN.invalidName.green);
     welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
   }
