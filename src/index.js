@@ -29,43 +29,17 @@ const main = async () => {
 
   displayMenu(welcome);
 
-  let menu = await askQuestion(COPY_EN.menuPrompt.black.bgYellow);
-  menu = await validateMenuChoice(menu);
+  let menuChoice = await askQuestion(COPY_EN.menuPrompt.black.bgYellow);
+  menuChoice = await validateMenuChoice(menuChoice);
 
-  const { xValue, yValue } = await getUserInputs(menu);
+  const { xValue, yValue } = await getUserInputs(menuChoice);
 
   const calculate = new Calculator(xValue, yValue);
-  switch (menu) {
-    case 1:
-      console.log(`\nPI = ${calculate.pi}\n`.rainbow);
-      break;
-    case 2:
-      console.log(`\nEuler's Number = ${calculate.eulerNumber}\n`.rainbow);
-      break;
-    case 3:
-      console.log(`\nPercentage = ${calculate.percentage()}\n`.rainbow);
-      break;
-    case 4:
-      console.log(`\nSum = ${calculate.add()}\n`.rainbow);
-      break;
-    case 5:
-      console.log(`\nDifference = ${calculate.subtract()}\n`.rainbow);
-      break;
-    case 6:
-      console.log(`\nProduct = ${calculate.multiply()}\n`.rainbow);
-      break;
-    case 7:
-      console.log(`\nQuotient = ${calculate.divide()}\n`.rainbow);
-      break;
-    case 8:
-      console.log(`\nModulus = ${calculate.modulation()}\n`.rainbow);
-      break;
-    case 9:
-      console.log(`\nPower = ${calculate.elevate()}\n`.rainbow);
-      break;
-    case 10:
-      console.log(`\nSquare Root = ${calculate.sqrt()}\n`.rainbow);
-      break;
+
+  const option = MENU_OPTIONS[menuChoice];
+  if (option) {
+    const result = calculate[option.method]();
+    console.log(`\n${option.title} = ${result}\n`.rainbow);
   }
 
   const rainbow = chalkAnimation.rainbow(COPY_EN.farewell, 1);

@@ -1,5 +1,5 @@
-import { COPY_EN } from '../l10n/copyEN.js';
 import { PI, EULER_NUMBER } from '../constants/constants.js';
+import { COPY_EN } from '../l10n/copyEN.js';
 
 class Calculator {
   constructor(xValue, yValue) {

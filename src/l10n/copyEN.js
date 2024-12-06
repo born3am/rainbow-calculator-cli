@@ -10,7 +10,7 @@ const COPY_EN = {
   yVariablePrompt: 'Choose a NUMBER as your "y" variable (type "r" for random): ',
   widthVariablePrompt: 'Choose a NUMBER as your "width" variable (type "r" for random): ',
   resultPrompt: 'Great! Press now enter to get your result!',
-  farewell: 'I hope you had fun. See you later!!!',
+  farewell: 'I hope you had fun. See you later!!!\n',
   invalidNumber: '\nNot a valid number ',
   invalidNumberPrompt: `" is not valid. Type a NUMBER: `,
   divisorError: '\nERROR: the divisor cannot be "0"',
