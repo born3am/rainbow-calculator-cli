@@ -1,3 +1,5 @@
+import { COPY_EN } from '../l10n/calculatorEN.js';
+
 class Calculator {
   constructor(xValue, yValue) {
     this.xValue = xValue;
@@ -24,7 +26,7 @@ class Calculator {
 
   divide() {
     if (this.yValue === 0) {
-      console.log('\nERROR: the divisor cannot be "0"'.red);
+      console.log(COPY_EN.divisorError.red);
     } else {
       return this.xValue / this.yValue;
     }
@@ -32,7 +34,7 @@ class Calculator {
 
   modulation() {
     if (this.yValue === 0) {
-      console.log('\nERROR: the divisor cannot be "0"'.red);
+      console.log(COPY_EN.divisorError.red);
     } else {
       return this.xValue % this.yValue;
     }

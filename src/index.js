@@ -4,13 +4,13 @@ import colors from 'colors'; //it is being used under the hood
 
 import { Calculator } from './classes/calculator.js';
 import { MENU_OPTIONS } from './constants/menu.js';
-import { MENU_TEXT } from './constants/menuText.js';
+import { COPY_EN } from './l10n/calculatorEN.js';
 import { askQuestion, rl } from './utils/helpers.js';
 import { validateMenuChoice, validateNumberInput } from './utils/validation.js';
 
 const displayMenu = (nameInput) => {
   console.clear();
-  console.log(MENU_TEXT.getWelcomeMessage(nameInput).yellow);
+  console.log(COPY_EN.getGreetings(nameInput).yellow);
   Object.entries(MENU_OPTIONS).forEach(([index, option]) => {
     console.log(`${index} - ${option.title}`.italic.cyan);
   });
@@ -19,10 +19,10 @@ const displayMenu = (nameInput) => {
 const getUserInputs = async (menu) => {
   let width, xValue, yValue;
   if (menu >= 3 && menu <= 10) {
-    xValue = await askQuestion(MENU_TEXT.xVariablePrompt.green.bold);
+    xValue = await askQuestion(COPY_EN.xVariablePrompt.green.bold);
     xValue = await validateNumberInput(xValue);
     if (menu < 10) {
-      yValue = await askQuestion(MENU_TEXT.yVariablePrompt.green.bold);
+      yValue = await askQuestion(COPY_EN.yVariablePrompt.green.bold);
       yValue = await validateNumberInput(yValue);
     }
   }
@@ -31,17 +31,17 @@ const getUserInputs = async (menu) => {
 
 const main = async () => {
   console.clear();
-  console.log(MENU_TEXT.welcome.rainbow);
+  console.log(COPY_EN.welcome.rainbow);
 
-  let welcome = await askQuestion(MENU_TEXT.enterName.black.bgWhite);
+  let welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
   while (welcome === '' || parseFloat(welcome) || welcome.length < 3) {
-    console.log(MENU_TEXT.invalidName.green);
-    welcome = await askQuestion(MENU_TEXT.enterName.black.bgWhite);
+    console.log(COPY_EN.invalidName.green);
+    welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
   }
 
   displayMenu(welcome);
 
-  let menu = await askQuestion(MENU_TEXT.menuPrompt.black.bgYellow);
+  let menu = await askQuestion(COPY_EN.menuPrompt.black.bgYellow);
   menu = await validateMenuChoice(menu);
 
   const { xValue, yValue } = await getUserInputs(menu);
@@ -80,7 +80,7 @@ const main = async () => {
       break;
   }
 
-  const rainbow = chalkAnimation.rainbow(MENU_TEXT.farewell, 1);
+  const rainbow = chalkAnimation.rainbow(COPY_EN.farewell, 1);
   setTimeout(() => {
     rainbow.stop();
     rl.close();

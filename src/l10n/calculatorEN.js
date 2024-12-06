@@ -1,9 +1,9 @@
-import { MIN_MENU_OPTION, MAX_MENU_OPTION } from "./menu.js";
+import { MIN_MENU_OPTION, MAX_MENU_OPTION } from "../constants/menu.js";
 
-const MENU_TEXT = {
+const COPY_EN = {
   welcome: '\n\n    Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n',
   enterName: 'Please enter your name here: ',
-  getWelcomeMessage: (nameInput) => `\nHello ${nameInput}! What you wanna do with our calculator?\n`,
+  getGreetings: (nameInput) => `\nHello ${nameInput}! What you wanna do with our calculator?\n`,
   invalidName: '\nCome on, tell me your name man!\n',
   menuPrompt: `\nChoose a menu number (${MIN_MENU_OPTION}-${MAX_MENU_OPTION}) and press enter: `,
   xVariablePrompt: 'Choose a NUMBER as your "x" variable (type "r" for random): ',
@@ -13,6 +13,7 @@ const MENU_TEXT = {
   farewell: 'I hope you had fun. See you later!!!',
   invalidNumber: '\nNot a valid number ',
   invalidNumberPrompt: `" is not valid. Type a NUMBER: `,
+  divisorError: '\nERROR: the divisor cannot be "0"',
 };
 
-export { MENU_TEXT };
+export { COPY_EN };
