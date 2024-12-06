@@ -1,4 +1,4 @@
-import { COPY_EN } from '../l10n/calculatorEN.js';
+import { COPY_EN } from '../l10n/copyEN.js';
 
 class Calculator {
   constructor(xValue, yValue) {

@@ -1,12 +1,13 @@
 import chalkAnimation from 'chalk-animation';
 // eslint-disable-next-line no-unused-vars
-import colors from 'colors'; //it is being used under the hood
+import colors from 'colors'; // It is being used under the hood
 
 import { Calculator } from './classes/calculator.js';
 import { MENU_OPTIONS } from './constants/menu.js';
-import { COPY_EN } from './l10n/calculatorEN.js';
-import { askQuestion, rl } from './utils/helpers.js';
-import { validateMenuChoice, validateNumberInput } from './utils/validation.js';
+import { COPY_EN } from './l10n/copyEN.js';
+import { askQuestion, getUserInputs, rl } from './utils/helpers.js';
+import { validateMenuChoice } from './utils/validation.js';
+import { minUserNameLength } from '../config/config.js';
 
 const displayMenu = (nameInput) => {
   console.clear();
@@ -16,25 +17,12 @@ const displayMenu = (nameInput) => {
   });
 };
 
-const getUserInputs = async (menu) => {
-  let width, xValue, yValue;
-  if (menu >= 3 && menu <= 10) {
-    xValue = await askQuestion(COPY_EN.xVariablePrompt.green.bold);
-    xValue = await validateNumberInput(xValue);
-    if (menu < 10) {
-      yValue = await askQuestion(COPY_EN.yVariablePrompt.green.bold);
-      yValue = await validateNumberInput(yValue);
-    }
-  }
-  return { xValue, yValue, width };
-};
-
 const main = async () => {
   console.clear();
   console.log(COPY_EN.welcome.rainbow);
 
   let welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
-  while (welcome === '' || parseFloat(welcome) || welcome.length < 3) {
+  while (welcome === '' || parseFloat(welcome) || welcome.length < minUserNameLength) {
     console.log(COPY_EN.invalidName.green);
     welcome = await askQuestion(COPY_EN.enterName.black.bgWhite);
   }

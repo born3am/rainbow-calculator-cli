@@ -1,7 +1,7 @@
 import { askQuestion } from './helpers.js';
 import { randomUpTo } from './randomNumber.js';
 import { MIN_MENU_OPTION, MAX_MENU_OPTION, MENU_OPTIONS } from '../constants/menu.js';
-import { COPY_EN } from '../l10n/calculatorEN.js';
+import { COPY_EN } from '../l10n/copyEN.js';
 
 const validateMenuChoice = async (menuChoice) => {
   let choice = Number(menuChoice);
