@@ -1,5 +1,6 @@
-import { randomUpTo } from './randomNumber';
 import jest from 'jest-mock';
+
+import { randomUpTo } from './randomNumber';
 
 describe('randomUpTo', () => {
   test('should return a number between 0 and the specified max value', () => {
