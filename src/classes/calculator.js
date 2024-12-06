@@ -27,7 +27,7 @@ class Calculator {
 
   divide() {
     if (this.yValue === 0) {
-      console.log(COPY_EN.divisorError.red);
+      console.error(COPY_EN.divisorError.red);
     } else {
       return this.xValue / this.yValue;
     }
@@ -35,7 +35,7 @@ class Calculator {
 
   modulation() {
     if (this.yValue === 0) {
-      console.log(COPY_EN.divisorError.red);
+      console.error(COPY_EN.divisorError.red);
     } else {
       return this.xValue % this.yValue;
     }
