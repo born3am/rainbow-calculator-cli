@@ -1,14 +1,12 @@
+import { PI, EULER_NUMBER } from '../constants/constants.js';
+import { COPY_EN } from '../l10n/copyEN.js';
+
 class Calculator {
-  constructor(xValue, yValue, width) {
+  constructor(xValue, yValue) {
     this.xValue = xValue;
     this.yValue = yValue;
-    this.width = width;
-    this.pi = 3.141592653589793;
-    this.eulerNumber = 2.718281828459045;
-  }
-
-  ratio() {
-    return (Math.abs(this.yValue) / Math.abs(this.xValue)) * this.width;
+    this.pi = PI;
+    this.eulerNumber = EULER_NUMBER;
   }
 
   percentage() {
@@ -29,7 +27,7 @@ class Calculator {
 
   divide() {
     if (this.yValue === 0) {
-      console.log('\nERROR: the divisor cannot be "0"'.red);
+      console.log(COPY_EN.divisorError.red);
     } else {
       return this.xValue / this.yValue;
     }
@@ -37,7 +35,7 @@ class Calculator {
 
   modulation() {
     if (this.yValue === 0) {
-      console.log('\nERROR: the divisor cannot be "0"'.red);
+      console.log(COPY_EN.divisorError.red);
     } else {
       return this.xValue % this.yValue;
     }
