@@ -1,0 +1,97 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # Cache npm dependencies based on package-lock.json to speed up installs
+      - name: Cache npm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - run: npm ci  # Clean install of dependencies
+
+      - run: npm run build --if-present  # Build the project if the build script is defined
+
+  lint:
+    runs-on: ubuntu-latest
+    # Ensure linting only happens on PRs
+    if: github.event_name == 'pull_request'
+
+    needs: build  # Ensure linting runs after build completes
+
+    strategy:
+      matrix:
+        node-version: [22.x, 18.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # Cache npm modules
+      - name: Cache npm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - run: npm run lint  # Run linting to ensure code quality
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build  # Ensure this runs after the build job completes
+
+    strategy:
+      matrix:
+        node-version: [22.x, 18.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # Cache npm modules for test job
+      - name: Cache npm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - run: npm test  # Run tests
