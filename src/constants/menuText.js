@@ -1,5 +1,5 @@
 const MENU_TEXT = {
-  welcome: '\n\n  😀  Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n',
+  welcome: '\n\n    Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n',
   enterName: 'Please enter your name here: ',
   invalidName: '\nCome on, tell me your name man!\n',
   menuPrompt: 'Choose a menu number (0-10) and press enter: ',

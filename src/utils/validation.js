@@ -1,6 +1,6 @@
 import { askQuestion } from './helpers.js';
 import { randomUpTo } from './randomNumber.js';
-import { MIN_MENU_OPTION, MAX_MENU_OPTION } from '../constants/menu.js';
+import { MIN_MENU_OPTION, MAX_MENU_OPTION, MENU_OPTIONS } from '../constants/menu.js';
 import { MENU_TEXT } from '../constants/menuText.js';
 
 const validateMenuChoice = async (menuChoice) => {
@@ -10,6 +10,7 @@ const validateMenuChoice = async (menuChoice) => {
     choice = await askQuestion(MENU_TEXT.menuPrompt.black.bgYellow);
     choice = Number(choice);
   }
+  console.log(`\n${MENU_OPTIONS[choice].description}\n`.green);
   return choice;
 };
 
