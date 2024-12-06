@@ -1,6 +1,6 @@
 import chalkAnimation from 'chalk-animation';
 // eslint-disable-next-line no-unused-vars
-import colors from 'colors';
+import colors from 'colors'; //it is being used under the hood
 
 import { Calculator } from './classes/calculator.js';
 import { MENU_OPTIONS } from './constants/menu.js';
@@ -8,9 +8,9 @@ import { MENU_TEXT } from './constants/menuText.js';
 import { askQuestion, rl } from './utils/helpers.js';
 import { validateMenuChoice, validateNumberInput } from './utils/validation.js';
 
-const displayMenu = (welcome) => {
+const displayMenu = (nameInput) => {
   console.clear();
-  console.log(`\nHello ${welcome.italic.underline.bold}! What you wanna do with our calculator?`.yellow);
+  console.log(MENU_TEXT.getWelcomeMessage(nameInput).yellow);
   Object.entries(MENU_OPTIONS).forEach(([index, option]) => {
     console.log(`${index} - ${option.title}`.italic.cyan);
   });
