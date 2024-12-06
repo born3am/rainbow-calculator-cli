@@ -1,14 +1,9 @@
 class Calculator {
-  constructor(xValue, yValue, width) {
+  constructor(xValue, yValue) {
     this.xValue = xValue;
     this.yValue = yValue;
-    this.width = width;
     this.pi = 3.141592653589793;
     this.eulerNumber = 2.718281828459045;
-  }
-
-  ratio() {
-    return (Math.abs(this.yValue) / Math.abs(this.xValue)) * this.width;
   }
 
   percentage() {
