@@ -1,11 +1,12 @@
 import { COPY_EN } from '../l10n/copyEN.js';
+import { PI, EULER_NUMBER } from '../constants/constants.js';
 
 class Calculator {
   constructor(xValue, yValue) {
     this.xValue = xValue;
     this.yValue = yValue;
-    this.pi = 3.141592653589793;
-    this.eulerNumber = 2.718281828459045;
+    this.pi = PI;
+    this.eulerNumber = EULER_NUMBER;
   }
 
   percentage() {

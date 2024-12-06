@@ -1,4 +1,4 @@
-import { MIN_MENU_OPTION, MAX_MENU_OPTION } from '../constants/menu.js';
+import { MIN_MENU_OPTION, MAX_MENU_OPTION } from '../constants/constants.js';
 
 const COPY_EN = {
   welcome: '\n\n    Welcome to the "RAINBOW CALCULATOR"    \n\n\n\n',

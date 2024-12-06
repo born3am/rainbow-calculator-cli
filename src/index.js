@@ -3,7 +3,7 @@ import chalkAnimation from 'chalk-animation';
 import colors from 'colors'; // It is being used under the hood
 
 import { Calculator } from './classes/calculator.js';
-import { MENU_OPTIONS } from './constants/menu.js';
+import { MENU_OPTIONS } from './constants/constants.js';
 import { COPY_EN } from './l10n/copyEN.js';
 import { askQuestion, getUserInputs, rl } from './utils/helpers.js';
 import { validateMenuChoice } from './utils/validation.js';
@@ -40,7 +40,7 @@ const main = async () => {
       console.log(`\nPI = ${calculate.pi}\n`.rainbow);
       break;
     case 2:
-      console.log(`\nEuler's Number = ${calculate.e}\n`.rainbow);
+      console.log(`\nEuler's Number = ${calculate.eulerNumber}\n`.rainbow);
       break;
     case 3:
       console.log(`\nPercentage = ${calculate.percentage()}\n`.rainbow);

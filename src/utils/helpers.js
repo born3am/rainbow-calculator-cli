@@ -1,7 +1,7 @@
 import readline from 'readline';
 
 import { validateNumberInput } from './validation.js';
-import { MENU_OPTIONS } from '../constants/menu.js';
+import { MENU_OPTIONS } from '../constants/constants.js';
 import { COPY_EN } from '../l10n/copyEN.js';
 
 const rl = readline.createInterface({
